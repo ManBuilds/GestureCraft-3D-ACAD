@@ -1,0 +1,16 @@
+# secrets and local config
+.env
+frontend/js/config.js
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# local data and generated artefacts
+backend/data/
+backend/ml/data/
+backend/ml/weights/*.pt
+.DS_Store

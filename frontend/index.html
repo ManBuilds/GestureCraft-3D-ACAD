@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gesturecraft – Spatial Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css?v=20261113_01">
+<script>
+  if (location.protocol === 'file:') {
+    alert('Please open http://localhost:8000 in your browser, not the local file directly.');
+  }
+</script>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<header><h1>Gesturecraft</h1><p>Spatial Lab · massing by hand</p></header>
+
+<ul id="guide">
+  <li id="g-open"><b>Open palm</b>Hover. Nothing changes.</li>
+  <li id="g-pinch"><b>Pinch and release</b>Hold to preview, release to place. Drag while pinched to size a volume.</li>
+  <li id="g-peace" class="del"><b>Peace sign</b>Hold on a block to remove it.</li>
+  <li id="g-fist"><b>Fist</b>Move it to turn the model.</li>
+  <li id="g-yo" class="del"><b>Yo sign</b>Hold to clear everything. Undo restores it.</li>
+</ul>
+
+<div id="status"><div id="pose">Waiting for a hand</div><div id="sub" class="mono">–</div><div id="bar"><i></i></div>
+  <div id="ml" class="mono"></div><div id="note" class="mono"></div></div>
+
+<details id="panel" open><summary>Controls</summary><div class="in">
+  <h3>pointer</h3>
+  <label for="speed">Pointer speed <b id="speedV"></b></label><input id="speed" type="range" min="0.1" max="1" step="0.01">
+  <div class="ends"><span>slow, precise</span><span>fast</span></div>
+  <label for="steady">Steadiness <b id="steadyV"></b></label><input id="steady" type="range" min="0.1" max="0.95" step="0.01">
+  <div class="ends"><span>responsive</span><span>steady</span></div>
+  <label for="reach">Reach / Hand Range <b id="reachV"></b></label><input id="reach" type="range" min="0.5" max="3" step="0.05">
+  <div class="ends"><span>broad arm moves</span><span>compact / high reach</span></div>
+  <label for="pinch">Pinch firmness <b id="pinchV"></b></label><input id="pinch" type="range" min="0" max="1" step="0.01">
+  <div class="ends"><span>light touch</span><span>firm pinch</span></div>
+  <h3>material & colour</h3>
+  <div class="sw" id="sw"></div>
+  <div class="grid">
+    <button class="b" id="rainbow">🌈 Rainbow Mode</button>
+    <button class="b" id="recolor">Recolour all blocks</button>
+  </div>
+  <h3>model</h3>
+  <div class="grid">
+    <button class="b" id="undo" disabled>Undo</button><button class="b" id="clear">Clear</button>
+    <button class="b" id="recentre">Recentre hand</button><button class="b" id="reset">Reset view</button>
+    <button class="b" id="save">Save to server</button><button class="b" id="load">Load latest</button>
+    <button class="b f w" id="export">Export .obj</button>
+  </div>
+  <label style="margin-top:12px;justify-content:flex-start;gap:8px"><input type="checkbox" id="showCam"> Camera view</label>
+  <label style="margin-top:8px;justify-content:flex-start;gap:8px"><input type="checkbox" id="verify"> Verify gestures with server model</label>
+</div></details>
+
+<div id="cam">
+  <div class="cam-handle cam-handle-nw" title="Drag corner to resize (double-click to toggle size)"></div>
+  <div class="cam-handle cam-handle-w" title="Drag border to resize"></div>
+  <div class="cam-handle cam-handle-n" title="Drag border to resize"></div>
+  <span class="mono">tracking</span>
+  <div class="cam-wrap"><video id="video" playsinline webkit-playsinline muted autoplay></video><canvas id="ov" width="640" height="480"></canvas></div>
+</div>
+
+<script type="module" src="js/app.js?v=20261113_02"></script>
+</body>
+</html>
