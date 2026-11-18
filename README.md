@@ -43,7 +43,14 @@ R recentres your hand. Ctrl/Cmd+Z undoes.
 5. **Filtering**: One Euro filter on the cursor, pointer speed limit, hysteresis on the pinch, 4-of-5 frame voting.
 
 ### Training data (be upfront about this in the report)
-`backend/ml/hand_synth.py` generates **synthetic** samples from a posed 3D hand skeleton (joint angles per gesture, random view, hand size, mirroring, jitter). The shipped model was trained on 30,000 of these. Validation accuracy on held-out synthetic samples is about 96.8% (`ml/reports/training_report.png`). **That is not real-world accuracy.**
+`backend/ml/hand_synth.py` generates **synthetic** samples from a posed 3D hand skeleton (joint angles per gesture, random view, hand size, mirroring, jitter). The shipped model was trained on 30,000 of these. Validation accuracy on held-out synthetic samples is about 96.8%.
+
+![Synthetic Hand Gesture Samples](backend/ml/reports/gesture_samples.png)
+
+![Model Training & Validation Report](backend/ml/reports/training_report.png)
+
+> **Note on Real-world Accuracy:** Synthetic validation accuracy measures performance on held-out synthetic hand poses. Real-world accuracy depends on webcam lighting, distance, and background clutter.
+
 To train on real hands too:
 ```
 pip install -r requirements-ml.txt

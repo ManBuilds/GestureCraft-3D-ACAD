@@ -1,6 +1,5 @@
 # secrets and local config
 .env
-frontend/js/config.js
 
 # python
 __pycache__/
